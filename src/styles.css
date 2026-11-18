@@ -1,0 +1,239 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Design system — light, clean, futuristic portfolio.
+ *
+ * Near-white background with soft sky blue accents, oversized
+ * editorial typography, monospace technical labels, refined borders.
+ * All colors use oklch.
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --font-display: var(--font-family-display);
+  --font-sans: var(--font-family-sans);
+  --font-mono: var(--font-family-mono);
+}
+
+:root {
+  --radius: 0.25rem;
+
+  --font-family-display: "Syne", sans-serif;
+  --font-family-sans: "Space Grotesk", sans-serif;
+  --font-family-mono: "JetBrains Mono", monospace;
+
+  --background: oklch(0.975 0.008 220);
+  --foreground: oklch(0.23 0.045 240);
+  --card: oklch(0.995 0.003 220);
+  --card-foreground: oklch(0.23 0.045 240);
+  --popover: oklch(0.995 0.003 220);
+  --popover-foreground: oklch(0.23 0.045 240);
+  --primary: oklch(0.55 0.20 220);
+  --primary-foreground: oklch(0.995 0.003 220);
+  --secondary: oklch(0.93 0.025 220);
+  --secondary-foreground: oklch(0.42 0.13 220);
+  --muted: oklch(0.94 0.012 220);
+  --muted-foreground: oklch(0.5 0.035 240);
+  --accent: oklch(0.55 0.20 220);
+  --accent-foreground: oklch(0.995 0.003 220);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.985 0.005 220);
+  --border: oklch(0.28 0.048 240 / 12%);
+  --input: oklch(0.28 0.048 240 / 16%);
+  --ring: oklch(0.55 0.20 220 / 45%);
+  --grid-line: oklch(0.3 0.05 240 / 5%);
+  --glow-shadow: oklch(0.55 0.20 220 / 28%);
+}
+
+.dark {
+  --background: oklch(0.13 0.018 235);
+  --foreground: oklch(0.955 0.008 220);
+  --card: oklch(0.17 0.02 235);
+  --card-foreground: oklch(0.955 0.008 220);
+  --popover: oklch(0.17 0.02 235);
+  --popover-foreground: oklch(0.955 0.008 220);
+  --primary: oklch(0.75 0.16 210);
+  --primary-foreground: oklch(0.13 0.018 235);
+  --secondary: oklch(0.23 0.022 235);
+  --secondary-foreground: oklch(0.955 0.008 220);
+  --muted: oklch(0.23 0.022 235);
+  --muted-foreground: oklch(0.66 0.018 225);
+  --accent: oklch(0.75 0.16 210);
+  --accent-foreground: oklch(0.13 0.018 235);
+  --destructive: oklch(0.704 0.191 22.216);
+  --destructive-foreground: oklch(0.984 0.003 247.858);
+  --border: oklch(1 0 0 / 9%);
+  --input: oklch(1 0 0 / 12%);
+  --ring: oklch(0.75 0.16 210 / 60%);
+  --grid-line: oklch(1 0 0 / 3.5%);
+  --glow-shadow: oklch(0.75 0.16 210 / 35%);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-family-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection {
+    background-color: var(--color-accent);
+    color: var(--color-accent-foreground);
+  }
+}
+
+@layer utilities {
+  /* Monospace technical label: e.g. "01 / ABOUT" */
+  .label-mono {
+    font-family: var(--font-family-mono);
+    font-size: 0.6875rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+  }
+
+  /* Oversized editorial display type */
+  .display-xl {
+    font-family: var(--font-family-display);
+    font-weight: 800;
+    text-transform: uppercase;
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+  }
+
+  .display-md {
+    font-family: var(--font-family-display);
+    font-weight: 800;
+    text-transform: uppercase;
+    line-height: 1.02;
+    letter-spacing: -0.01em;
+  }
+
+  .text-accent-glow {
+    color: var(--color-accent);
+    text-shadow: 0 0 24px var(--glow-shadow);
+  }
+
+  /* Subtle technical grid backdrop */
+  .bg-grid {
+    background-image:
+      linear-gradient(var(--grid-line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+    background-size: 56px 56px;
+  }
+
+  .hairline-t {
+    border-top: 1px solid var(--color-border);
+  }
+}
+
+/* Scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Hero entrance animation */
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-rise {
+  animation: rise-in 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes pulse-dot {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.25;
+  }
+}
+
+.animate-pulse-dot {
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+@keyframes scan {
+  0% {
+    top: 0%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    top: 100%;
+    opacity: 0;
+  }
+}
