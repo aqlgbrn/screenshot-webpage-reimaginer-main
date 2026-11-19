@@ -1,5 +1,7 @@
+import { useState } from "react";
 import { Section } from "./Section";
 import { Reveal } from "./Reveal";
+import { ProjectPreviewModal } from "./ProjectPreviewModal";
 import { projects, type ProjectStatus } from "@/data/portfolio";
 
 function StatusBadge({ status }: { status: ProjectStatus }) {
@@ -32,6 +34,26 @@ function ProjectLink({ href, label }: { href: string; label: string }) {
 }
 
 export function Projects() {
+  const [selectedProject, setSelectedProject] = useState<{
+    title: string;
+    category: string;
+    description: string;
+    screenshots: { src: string; alt: string }[];
+  } | null>(null);
+
+  const openPreview = (project: typeof projects.items[0]) => {
+    setSelectedProject({
+      title: project.title,
+      category: project.category,
+      description: project.description,
+      screenshots: project.screenshots,
+    });
+  };
+
+  const closePreview = () => {
+    setSelectedProject(null);
+  };
+
   return (
     <Section id="projects" label={projects.label} headline={projects.headline}>
       <div className="space-y-16 md:space-y-24">
@@ -42,32 +64,61 @@ export function Projects() {
                 index % 2 === 1 ? "md:[direction:rtl]" : ""
               }`}
             >
-              {/* Preview panel — decorative until real screenshots are added */}
+              {/* Preview panel with screenshot */}
               <div className="md:[direction:ltr]">
-                <div className="bg-grid relative flex aspect-[4/3] flex-col justify-between overflow-hidden rounded-lg border border-border bg-card p-6 transition-colors duration-300 hover:border-accent/40">
-                  <p className="label-mono !text-muted-foreground">{project.number}</p>
-                  <div className="flex flex-col gap-1.5">
-                    {[68, 88, 52].map((width, i) => (
-                      <div
-                        key={i}
-                        aria-hidden="true"
-                        className="h-2 rounded-full"
-                        style={{
-                          width: `${width}%`,
-                          background:
-                            i === 0
-                              ? "color-mix(in oklab, var(--color-accent) 30%, transparent)"
-                              : "var(--color-border)",
-                        }}
-                      />
-                    ))}
+                <button
+                  type="button"
+                  onClick={() => openPreview(project)}
+                  className="w-full text-left group"
+                >
+                  <div className="bg-grid relative flex aspect-[4/3] flex-col justify-between overflow-hidden rounded-lg border border-border bg-card transition-all duration-300 hover:border-accent/60 hover:shadow-lg">
+                    {project.screenshots.length > 0 ? (
+                      <>
+                        <img
+                          src={project.screenshots[0].src}
+                          alt={project.screenshots[0].alt}
+                          className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                        <div className="relative p-6 flex flex-col justify-between h-full">
+                          <div />
+                          <div>
+                            <p className="label-mono !text-white/90">{project.number}</p>
+                            <p className="label-mono !text-[0.6rem] !text-white/80 mt-2">
+                              {project.screenshots.length} SCREENSHOT{project.screenshots.length > 1 ? "S" : ""}
+                            </p>
+                            <p className="label-mono !text-[0.6rem] !text-accent mt-1">
+                              CLICK TO PREVIEW
+                            </p>
+                          </div>
+                        </div>
+                      </>
+                    ) : (
+                      <>
+                        <p className="label-mono !text-muted-foreground">{project.number}</p>
+                        <div className="flex flex-col gap-1.5">
+                          {[68, 88, 52].map((width, i) => (
+                            <div
+                              key={i}
+                              aria-hidden="true"
+                              className="h-2 rounded-full"
+                              style={{
+                                width: `${width}%`,
+                                background:
+                                  i === 0
+                                    ? "color-mix(in oklab, var(--color-accent) 30%, transparent)"
+                                    : "var(--color-border)",
+                              }}
+                            />
+                          ))}
+                        </div>
+                        <p className="label-mono !text-[0.6rem] !text-muted-foreground">
+                          PREVIEW PENDING
+                        </p>
+                      </>
+                    )}
                   </div>
-                  <p className="label-mono !text-[0.6rem] !text-muted-foreground">
-                    {project.screenshots.length > 0
-                      ? `${project.screenshots.length} SCREENSHOT${project.screenshots.length > 1 ? "S" : ""}`
-                      : "PREVIEW PENDING"}
-                  </p>
-                </div>
+                </button>
               </div>
 
               {/* Details */}
@@ -151,6 +202,13 @@ export function Projects() {
           </Reveal>
         ))}
       </div>
+
+      {/* Project Preview Modal */}
+      <ProjectPreviewModal
+        isOpen={selectedProject !== null}
+        onClose={closePreview}
+        project={selectedProject}
+      />
     </Section>
   );
 }

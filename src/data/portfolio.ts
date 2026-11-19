@@ -94,8 +94,15 @@ export const projects = {
       techStack: [] as string[],
       // EDITABLE — "Completed" | "In Development" | "Prototype" | "" (hidden)
       status: "" as ProjectStatus,
-      // EDITABLE — add screenshot paths/URLs when available.
-      screenshots: [] as { src: string; alt: string }[],
+      // Screenshots from monitoring folder - ordered by user flow
+      screenshots: [
+        { src: "/monitoring/login and register.png", alt: "Login and Register" },
+        { src: "/monitoring/Dashboard.png", alt: "Dashboard" },
+        { src: "/monitoring/Kegiatan.png", alt: "Kegiatan" },
+        { src: "/monitoring/Departemen.png", alt: "Departemen" },
+        { src: "/monitoring/Isu Strategis.png", alt: "Isu Strategis" },
+        { src: "/monitoring/Laporan.png", alt: "Laporan" },
+      ],
       // EDITABLE — add real URLs only after confirming them.
       liveDemoUrl: "",
       githubUrl: "",
@@ -122,8 +129,15 @@ export const projects = {
       techStack: [] as string[],
       // EDITABLE — "Completed" | "In Development" | "Prototype" | "" (hidden)
       status: "" as ProjectStatus,
-      // EDITABLE — add screenshot paths/URLs when available.
-      screenshots: [] as { src: string; alt: string }[],
+      // Screenshots from Inventori folder - ordered by user flow
+      screenshots: [
+        { src: "/Inventori/Landing page.png", alt: "Landing Page" },
+        { src: "/Inventori/Login.png", alt: "Login" },
+        { src: "/Inventori/Dashboard.png", alt: "Dashboard" },
+        { src: "/Inventori/Inventaris.png", alt: "Inventaris" },
+        { src: "/Inventori/QR Code Label.png", alt: "QR Code Label" },
+        { src: "/Inventori/Laporan.png", alt: "Laporan" },
+      ],
       // EDITABLE — add real URLs only after confirming them.
       liveDemoUrl: "",
       githubUrl: "",
@@ -297,14 +311,20 @@ export const education = {
 export const contact = {
   label: "07 / CONTACT",
   headline: "LET'S BUILD SOMETHING MEANINGFUL.",
-  text: "I'm open to opportunities to learn, collaborate, and contribute to projects in information technology and digital solutions.",
-  buttons: [
-    // EDITABLE — every link must have a valid destination before publishing.
-    { label: "EMAIL ME", href: "" },
-    { label: "LINKEDIN", href: "" },
-    { label: "GITHUB", href: "" },
-    { label: "DOWNLOAD CV", href: "" },
-  ],
+  title: "Let's Connect",
+  description:
+    "Thank you for reviewing my portfolio. I am always open to discussing technical collaborations, organizational experiences, leadership opportunities, and innovative ideas.",
+  // EDITABLE — real email address. Hidden until filled in.
+  email: "muhammadaqeelgibran@gmail.com",
+  // EDITABLE — path to CV file inside public/. Hidden until filled in.
+  cvUrl: "/CV-Aqeel.pdf",
+  cvLabel: "Download CV",
+  // EDITABLE — only real profile URLs. Items with empty href are hidden.
+  socials: [
+    { label: "LinkedIn", href: "", icon: "linkedin" },
+    { label: "Instagram", href: "https://www.instagram.com/aql.gbrn/", icon: "instagram" },
+    { label: "GitHub", href: "", icon: "github" },
+  ] as { label: string; href: string; icon: "linkedin" | "instagram" | "github" }[],
 };
 
 /* ============ 10. FOOTER ============ */

@@ -1,6 +1,25 @@
+import { useState, useEffect } from "react";
 import { hero } from "@/data/portfolio";
 
 export function Hero() {
+  const [typedText, setTypedText] = useState("");
+  const [isTyping, setIsTyping] = useState(true);
+  const fullText = hero.headline;
+
+  useEffect(() => {
+    let index = 0;
+    const typingInterval = setInterval(() => {
+      if (index < fullText.length) {
+        setTypedText(fullText.slice(0, index + 1));
+        index++;
+      } else {
+        setIsTyping(false);
+        clearInterval(typingInterval);
+      }
+    }, 70); // Kecepatan mengetik (ms per karakter)
+
+    return () => clearInterval(typingInterval);
+  }, []);
   return (
     <section id="top" className="bg-grid relative overflow-hidden min-h-[100svh] flex items-center">
       {/* Ambient glow effects */}
@@ -33,8 +52,15 @@ export function Hero() {
 
             {/* Main Heading */}
             <h1 className="display-xl text-[clamp(2.5rem,6vw,4.5rem)] leading-[1.1]">
-              <span className="block">INFORMATION SYSTEMS</span>
-              <span className="block text-accent-glow">& DIGITAL SOLUTIONS.</span>
+              <span className="block">
+                {typedText.split(" & ")[0]}
+                {isTyping && (
+                  <span className="inline-block w-0.5 h-[0.8em] bg-accent ml-1 animate-pulse" />
+                )}
+              </span>
+              <span className="block text-accent-glow">
+                {typedText.includes(" & ") ? `& ${typedText.split(" & ")[1]}` : ""}
+              </span>
             </h1>
 
             {/* Professional Title */}
