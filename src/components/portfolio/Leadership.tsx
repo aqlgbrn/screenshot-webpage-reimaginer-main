@@ -26,9 +26,7 @@ export function Leadership() {
                     type="button"
                     onClick={() => setSelectedId(experience.id)}
                     className={`relative pl-6 text-left transition-all duration-300 ${
-                      selectedId === experience.id
-                        ? "opacity-100"
-                        : "opacity-60 hover:opacity-80"
+                      selectedId === experience.id ? "opacity-100" : "opacity-60 hover:opacity-80"
                     }`}
                   >
                     {/* Timeline dot */}
@@ -73,7 +71,7 @@ export function Leadership() {
             {selectedExperience && (
               <div
                 key={selectedExperience.id}
-                className="relative rounded-2xl border border-border bg-white/40 backdrop-blur-xl shadow-xl shadow-black/5 p-8 transition-all duration-500"
+                className="relative rounded-2xl border border-border bg-white/40 p-6 backdrop-blur-xl shadow-xl shadow-black/5 transition-all duration-500 sm:p-8"
               >
                 {/* Header */}
                 <div className="flex flex-wrap items-start justify-between gap-4 mb-6">

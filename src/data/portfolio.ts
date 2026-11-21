@@ -219,7 +219,8 @@ export const leadership = {
       description:
         "As Vice President of BEM KM Fasilkom UNSRI, I support the President in leading the student organization. My role involves assisting in coordinating departments and administrators, overseeing the implementation of work programs, maintaining internal coordination and organizational effectiveness, and helping ensure the organization's vision and mission are executed effectively. This position requires strong communication skills, strategic thinking, and the ability to collaborate with various stakeholders to achieve organizational goals.",
       achievements: [],
-      instagram: "https://www.instagram.com/p/DWZY3kriZbs/?utm_source=ig_web_copy_link&fqnt=MzRlODBiNWFlZA==&avpt=MzRlODBiNWFlZA==",
+      instagram:
+        "https://www.instagram.com/p/DWZY3kriZbs/?utm_source=ig_web_copy_link&fqnt=MzRlODBiNWFlZA==&avpt=MzRlODBiNWFlZA==",
       certificate: "",
     },
     {
@@ -233,7 +234,8 @@ export const leadership = {
       description:
         "Led the planning and execution of the 2025 Fasilkom UNSRI New Student Admission activities, with a focus on team coordination, preparation, and event delivery. Managed cross-functional teams and ensured smooth execution of all admission-related activities.",
       achievements: [],
-      instagram: "https://www.instagram.com/p/DJ559L6TYTV/?utm_source=ig_web_copy_link&hvrq=MzRlODBiNWFlZA==&avpt=MzRlODBiNWFlZA==",
+      instagram:
+        "https://www.instagram.com/p/DJ559L6TYTV/?utm_source=ig_web_copy_link&hvrq=MzRlODBiNWFlZA==&avpt=MzRlODBiNWFlZA==",
       certificate: "",
     },
     {
@@ -247,7 +249,8 @@ export const leadership = {
       description:
         "Supported operational and logistics coordination, including activity preparation, resource planning, and technical readiness throughout the event. Collaborated with various departments to ensure efficient resource allocation and seamless execution of all operational aspects.",
       achievements: [],
-      instagram: "https://www.instagram.com/reel/DMcgT35z09i/?utm_source=ig_web_copy_link&avpt=MzRlODBiNWFlZA==",
+      instagram:
+        "https://www.instagram.com/reel/DMcgT35z09i/?utm_source=ig_web_copy_link&avpt=MzRlODBiNWFlZA==",
       certificate: "",
     },
     {
@@ -261,7 +264,8 @@ export const leadership = {
       description:
         "Contributed to project coordination, team communication, and the preparation and execution of event activities. Assisted in managing timelines, coordinating with vendors and partners, and ensuring all project deliverables were met on schedule.",
       achievements: [],
-      instagram: "https://www.instagram.com/sinergi.fest?utm_source=ig_web_button_share_sheet&bqrl=ZDNlZDc0MzIxNw==",
+      instagram:
+        "https://www.instagram.com/sinergi.fest?utm_source=ig_web_button_share_sheet&bqrl=ZDNlZDc0MzIxNw==",
       certificate: "",
     },
     {
@@ -275,7 +279,8 @@ export const leadership = {
       description:
         "Contributed to student organization activities through departmental responsibilities, internal coordination, and organizational initiatives. Led departmental activities and coordinated with other departments to achieve organizational objectives.",
       achievements: [],
-      instagram: "https://www.instagram.com/p/DHyZSJSpiUq/?utm_source=ig_web_copy_link&fqnt=MzRlODBiNWFlZA==&avpt=MzRlODBiNWFlZA==",
+      instagram:
+        "https://www.instagram.com/p/DHyZSJSpiUq/?utm_source=ig_web_copy_link&fqnt=MzRlODBiNWFlZA==&avpt=MzRlODBiNWFlZA==",
       certificate: "",
     },
   ],

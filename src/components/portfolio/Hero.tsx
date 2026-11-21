@@ -19,7 +19,7 @@ export function Hero() {
     }, 70); // Kecepatan mengetik (ms per karakter)
 
     return () => clearInterval(typingInterval);
-  }, []);
+  }, [fullText]);
   return (
     <section id="top" className="bg-grid relative overflow-hidden min-h-[100svh] flex items-center">
       {/* Ambient glow effects */}
@@ -37,7 +37,10 @@ export function Hero() {
       <div className="mx-auto max-w-7xl px-5 md:px-8 py-32 w-full">
         <div className="grid gap-8 lg:gap-16 lg:grid-cols-2 items-center">
           {/* LEFT COLUMN - Personal Introduction */}
-          <div className="flex flex-col justify-center animate-rise" style={{ animationDelay: "60ms" }}>
+          <div
+            className="flex flex-col justify-center animate-rise"
+            style={{ animationDelay: "60ms" }}
+          >
             {/* Status Badge */}
             <div className="inline-flex items-center gap-2 mb-6">
               <span
@@ -45,13 +48,11 @@ export function Hero() {
                 className="animate-pulse-dot inline-block h-2 w-2 rounded-full"
                 style={{ background: "var(--color-accent)" }}
               />
-              <p className="label-mono !text-[0.65rem] text-accent">
-                {hero.statusBadge}
-              </p>
+              <p className="label-mono !text-[0.65rem] text-accent">{hero.statusBadge}</p>
             </div>
 
             {/* Main Heading */}
-            <h1 className="display-xl text-[clamp(2.5rem,6vw,4.5rem)] leading-[1.1]">
+            <h1 className="display-xl text-[clamp(1.6rem,6.4vw,4.5rem)] leading-[1.08] [overflow-wrap:anywhere]">
               <span className="block">
                 {typedText.split(" & ")[0]}
                 {isTyping && (
@@ -64,9 +65,7 @@ export function Hero() {
             </h1>
 
             {/* Professional Title */}
-            <p className="label-mono !text-muted-foreground mt-6">
-              {hero.role}
-            </p>
+            <p className="label-mono !text-muted-foreground mt-6">{hero.role}</p>
 
             {/* Description */}
             <p className="mt-4 text-base leading-relaxed text-muted-foreground md:text-lg max-w-xl">
@@ -76,16 +75,20 @@ export function Hero() {
             {/* Profile Info Card */}
             <div className="mt-8 p-5 rounded-xl border border-border bg-card/50 backdrop-blur-sm">
               <div className="space-y-3">
-                <div className="flex items-center justify-between border-b border-border/50 pb-3">
-                  <span className="label-mono !text-[0.6rem] !text-muted-foreground">EDUCATION</span>
+                <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 border-b border-border/50 pb-3">
+                  <span className="label-mono !text-[0.6rem] !text-muted-foreground">
+                    EDUCATION
+                  </span>
                   <span className="text-sm text-foreground">{hero.profileInfo.education}</span>
                 </div>
-                <div className="flex items-center justify-between border-b border-border/50 pb-3">
+                <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 border-b border-border/50 pb-3">
                   <span className="label-mono !text-[0.6rem] !text-muted-foreground">GPA</span>
                   <span className="text-sm text-foreground font-mono">{hero.profileInfo.gpa}</span>
                 </div>
                 <div className="border-b border-border/50 pb-3">
-                  <span className="label-mono !text-[0.6rem] !text-muted-foreground block mb-2">FOCUS AREAS</span>
+                  <span className="label-mono !text-[0.6rem] !text-muted-foreground block mb-2">
+                    FOCUS AREAS
+                  </span>
                   <div className="flex flex-wrap gap-2">
                     {hero.profileInfo.focus.map((focus, i) => (
                       <span
@@ -97,7 +100,7 @@ export function Hero() {
                     ))}
                   </div>
                 </div>
-                <div className="flex items-center justify-between">
+                <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
                   <span className="label-mono !text-[0.6rem] !text-muted-foreground">LOCATION</span>
                   <span className="text-sm text-foreground">{hero.profileInfo.location}</span>
                 </div>
@@ -109,7 +112,10 @@ export function Hero() {
               <a
                 href={hero.primaryCtaTarget}
                 className="label-mono !text-[0.7rem] rounded-full px-7 py-3.5 transition-transform duration-200 hover:-translate-y-0.5"
-                style={{ background: "var(--color-accent)", color: "var(--color-accent-foreground)" }}
+                style={{
+                  background: "var(--color-accent)",
+                  color: "var(--color-accent-foreground)",
+                }}
               >
                 {hero.primaryCta}
               </a>
@@ -123,15 +129,22 @@ export function Hero() {
           </div>
 
           {/* RIGHT COLUMN - Profile Showcase */}
-          <div className="flex justify-center lg:justify-end animate-rise" style={{ animationDelay: "200ms" }}>
+          <div
+            className="flex justify-center lg:justify-end animate-rise"
+            style={{ animationDelay: "200ms" }}
+          >
             <div className="relative w-full max-w-[320px]">
               {/* Profile Card */}
-              <div className="relative rounded-3xl overflow-hidden border border-border bg-white/30 backdrop-blur-xl shadow-2xl shadow-black/10" style={{ aspectRatio: "3/4" }}>
+              <div
+                className="relative rounded-3xl overflow-hidden border border-border bg-white/30 backdrop-blur-xl shadow-2xl shadow-black/10"
+                style={{ aspectRatio: "3/4" }}
+              >
                 {/* Ambient glow behind profile */}
                 <div
                   className="absolute inset-0 opacity-30"
                   style={{
-                    background: "radial-gradient(circle at 50% 50%, var(--color-accent) 0%, transparent 70%)",
+                    background:
+                      "radial-gradient(circle at 50% 50%, var(--color-accent) 0%, transparent 70%)",
                   }}
                 />
 
@@ -148,7 +161,10 @@ export function Hero() {
 
                 {/* Scanning Line Effect */}
                 <div className="absolute inset-0 pointer-events-none overflow-hidden">
-                  <div className="absolute w-full h-0.5 bg-accent/30 animate-[scan_3s_ease-in-out_infinite]" style={{ top: "0%" }} />
+                  <div
+                    className="absolute w-full h-0.5 bg-accent/30 animate-[scan_3s_ease-in-out_infinite]"
+                    style={{ top: "0%" }}
+                  />
                 </div>
 
                 {/* Technical Interface Labels */}
@@ -159,7 +175,9 @@ export function Hero() {
                   <p className="label-mono !text-[0.5rem] !text-accent">PROFILE_STATUS: ONLINE</p>
                 </div>
                 <div className="absolute bottom-3 left-3">
-                  <p className="label-mono !text-[0.5rem] !text-muted-foreground">CLASS: INFORMATICS_GRADUATE</p>
+                  <p className="label-mono !text-[0.5rem] !text-muted-foreground">
+                    CLASS: INFORMATICS_GRADUATE
+                  </p>
                 </div>
                 <div className="absolute bottom-3 right-3">
                   <p className="label-mono !text-[0.5rem] !text-accent">PROFILE_ACTIVE</p>
@@ -173,7 +191,10 @@ export function Hero() {
               </div>
 
               {/* Floating effect */}
-              <div className="absolute -inset-3 rounded-3xl opacity-15 blur-xl" style={{ background: "var(--color-accent)" }} />
+              <div
+                className="absolute -inset-3 rounded-3xl opacity-15 blur-xl"
+                style={{ background: "var(--color-accent)" }}
+              />
             </div>
           </div>
         </div>

@@ -35,7 +35,7 @@ export function Contact() {
   return (
     <Section id="contact" label={contact.label} headline={contact.headline}>
       <Reveal>
-        <div className="rounded-[44px] border border-border bg-[#EFF6FC] p-8 shadow-[0_30px_70px_-30px_rgba(14,116,180,0.25)] md:p-12 lg:p-16">
+        <div className="rounded-[44px] border border-border bg-[#EFF6FC] p-6 shadow-[0_30px_70px_-30px_rgba(14,116,180,0.25)] sm:p-8 md:p-12 lg:p-16">
           <div className="grid gap-10 lg:grid-cols-2 lg:gap-16">
             {/* LEFT — intro, description, email */}
             <div className="flex flex-col">

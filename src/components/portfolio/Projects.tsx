@@ -27,7 +27,9 @@ function ProjectLink({ href, label }: { href: string; label: string }) {
       rel="noopener noreferrer"
       className="label-mono !text-[0.65rem] inline-flex items-center gap-2 transition-colors hover:text-accent"
     >
-      <span aria-hidden="true" className="text-accent">↗</span>
+      <span aria-hidden="true" className="text-accent">
+        ↗
+      </span>
       {label}
     </a>
   );
@@ -41,7 +43,7 @@ export function Projects() {
     screenshots: { src: string; alt: string }[];
   } | null>(null);
 
-  const openPreview = (project: typeof projects.items[0]) => {
+  const openPreview = (project: (typeof projects.items)[0]) => {
     setSelectedProject({
       title: project.title,
       category: project.category,
@@ -85,7 +87,8 @@ export function Projects() {
                           <div>
                             <p className="label-mono !text-white/90">{project.number}</p>
                             <p className="label-mono !text-[0.6rem] !text-white/80 mt-2">
-                              {project.screenshots.length} SCREENSHOT{project.screenshots.length > 1 ? "S" : ""}
+                              {project.screenshots.length} SCREENSHOT
+                              {project.screenshots.length > 1 ? "S" : ""}
                             </p>
                             <p className="label-mono !text-[0.6rem] !text-accent mt-1">
                               CLICK TO PREVIEW
@@ -132,31 +135,39 @@ export function Projects() {
                   {project.title}
                 </h3>
 
-                <p className="label-mono !text-muted-foreground mt-3">
-                  {project.organization}
-                </p>
+                <p className="label-mono !text-muted-foreground mt-3">{project.organization}</p>
 
-                <p className="mt-5 leading-relaxed text-muted-foreground">
-                  {project.description}
-                </p>
+                <p className="mt-5 leading-relaxed text-muted-foreground">{project.description}</p>
 
                 {/* EDITABLE narrative fields — rendered only when filled in */}
                 {project.overview && (
                   <div className="mt-6">
-                    <p className="label-mono !text-muted-foreground !text-[0.6rem]">PROJECT OVERVIEW</p>
-                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{project.overview}</p>
+                    <p className="label-mono !text-muted-foreground !text-[0.6rem]">
+                      PROJECT OVERVIEW
+                    </p>
+                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                      {project.overview}
+                    </p>
                   </div>
                 )}
                 {project.problemStatement && (
                   <div className="mt-5">
-                    <p className="label-mono !text-muted-foreground !text-[0.6rem]">PROBLEM STATEMENT</p>
-                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{project.problemStatement}</p>
+                    <p className="label-mono !text-muted-foreground !text-[0.6rem]">
+                      PROBLEM STATEMENT
+                    </p>
+                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                      {project.problemStatement}
+                    </p>
                   </div>
                 )}
                 {project.proposedSolution && (
                   <div className="mt-5">
-                    <p className="label-mono !text-muted-foreground !text-[0.6rem]">PROPOSED SOLUTION</p>
-                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{project.proposedSolution}</p>
+                    <p className="label-mono !text-muted-foreground !text-[0.6rem]">
+                      PROPOSED SOLUTION
+                    </p>
+                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                      {project.proposedSolution}
+                    </p>
                   </div>
                 )}
 
@@ -176,13 +187,18 @@ export function Projects() {
 
                 {project.techStack.length > 0 && (
                   <div className="mt-6">
-                    <p className="label-mono !text-muted-foreground !text-[0.6rem]">TECHNOLOGY STACK</p>
+                    <p className="label-mono !text-muted-foreground !text-[0.6rem]">
+                      TECHNOLOGY STACK
+                    </p>
                     <ul className="mt-3 flex flex-wrap gap-2">
                       {project.techStack.map((tech) => (
                         <li
                           key={tech}
                           className="rounded-full px-3.5 py-1.5 font-mono text-xs"
-                          style={{ background: "var(--color-secondary)", color: "var(--color-accent-foreground)" }}
+                          style={{
+                            background: "var(--color-secondary)",
+                            color: "var(--color-accent-foreground)",
+                          }}
                         >
                           {tech}
                         </li>
