@@ -317,13 +317,17 @@ export const contact = {
   // EDITABLE — real email address. Hidden until filled in.
   email: "muhammadaqeelgibran@gmail.com",
   // EDITABLE — path to CV file inside public/. Hidden until filled in.
-  cvUrl: "/CV-Aqeel.pdf",
+  cvUrl: "/M%20Aqeel%20Gibran%20%7C%20Curriculum%20Vitae.pdf",
   cvLabel: "Download CV",
   // EDITABLE — only real profile URLs. Items with empty href are hidden.
   socials: [
-    { label: "LinkedIn", href: "", icon: "linkedin" },
+    {
+      label: "LinkedIn",
+      href: "https://www.linkedin.com/in/m-aqeel-gibran-b691aa392/",
+      icon: "linkedin",
+    },
     { label: "Instagram", href: "https://www.instagram.com/aql.gbrn/", icon: "instagram" },
-    { label: "GitHub", href: "", icon: "github" },
+    { label: "GitHub", href: "https://github.com/aqlgbrn", icon: "github" },
   ] as { label: string; href: string; icon: "linkedin" | "instagram" | "github" }[],
 };
 
