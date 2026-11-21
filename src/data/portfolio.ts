@@ -76,7 +76,7 @@ export const projects = {
       number: "PROJECT 01",
       title: "Web-Based Work Monitoring Application",
       organization: "PT Pupuk Sriwidjaja Palembang",
-      category: "Web Development / Productivity",
+      category: "Project Development / Web Application",
       description:
         "A web-based application designed to support work assignment, progress monitoring, task status tracking, and periodic reporting.",
       // EDITABLE — shown only when filled in.
@@ -112,7 +112,7 @@ export const projects = {
       number: "PROJECT 02",
       title: "Web-Based Inventory Management System",
       organization: "Kelurahan Plaju Ulu",
-      category: "Web Development / Information Systems",
+      category: "Information Systems / Web Development",
       description:
         "A web-based inventory management system concept designed to organize asset records, support QR Code identification, and monitor inventory status.",
       // EDITABLE — shown only when filled in.
@@ -170,30 +170,34 @@ export const skills = {
   headline: "TOOLS, SYSTEMS & PROBLEM-SOLVING.",
   categories: [
     {
-      name: "WEB DEVELOPMENT",
+      name: "CORPORATE & COMMUNICATION",
       items: [
-        "Web Application Development",
-        "Responsive Interface Development",
-        "Frontend Development",
-      ],
-    },
-    {
-      name: "INFORMATION SYSTEMS",
-      items: [
-        "Information Systems Analysis",
-        "Database Management",
-        "Workflow Understanding",
-        "Inventory Management Systems",
-      ],
-    },
-    {
-      name: "PROFESSIONAL SKILLS",
-      items: [
-        "Project Coordination",
-        "Team Collaboration",
-        "Problem-Solving",
+        "Corporate Communication",
+        "Public Relations",
         "Public Speaking",
-        "Communication",
+        "Internal Communication",
+        "Stakeholder Coordination",
+      ],
+    },
+    {
+      name: "LEADERSHIP & MANAGEMENT",
+      items: [
+        "Leadership",
+        "Team Coordination",
+        "Project Management",
+        "Event Management",
+        "Administrative Coordination",
+      ],
+    },
+    {
+      name: "DIGITAL & TECHNICAL",
+      items: [
+        "Web Development",
+        "Information Systems",
+        "Database Management",
+        "Microsoft Office",
+        "Google Workspace",
+        "Canva",
       ],
     },
   ],

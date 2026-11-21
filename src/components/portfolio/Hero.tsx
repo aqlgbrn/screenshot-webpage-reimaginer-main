@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { hero } from "@/data/portfolio";
+import { hero, profile } from "@/data/portfolio";
 
 export function Hero() {
   const [typedText, setTypedText] = useState("");
@@ -51,18 +51,23 @@ export function Hero() {
               <p className="label-mono !text-[0.65rem] text-accent">{hero.statusBadge}</p>
             </div>
 
-            {/* Main Heading */}
-            <h1 className="display-xl text-[clamp(1.6rem,6.4vw,4.5rem)] leading-[1.08] [overflow-wrap:anywhere]">
+            {/* Name */}
+            <h1 className="display-xl text-[clamp(2rem,8vw,4.5rem)] leading-[1.02] [overflow-wrap:anywhere]">
+              {profile.fullName.toUpperCase()}
+            </h1>
+
+            {/* Typed headline */}
+            <p className="display-md text-accent-glow mt-3 text-[clamp(1.1rem,3.4vw,2rem)] leading-snug">
               <span className="block">
                 {typedText.split(" & ")[0]}
                 {isTyping && (
                   <span className="inline-block w-0.5 h-[0.8em] bg-accent ml-1 animate-pulse" />
                 )}
               </span>
-              <span className="block text-accent-glow">
-                {typedText.includes(" & ") ? `& ${typedText.split(" & ")[1]}` : ""}
+              <span className="block">
+                {typedText.includes(" & ") ? `& ${typedText.split(" & ")[1]}` : "\u00A0"}
               </span>
-            </h1>
+            </p>
 
             {/* Professional Title */}
             <p className="label-mono !text-muted-foreground mt-6">{hero.role}</p>
@@ -108,10 +113,10 @@ export function Hero() {
             </div>
 
             {/* Action Buttons */}
-            <div className="mt-8 flex flex-wrap gap-4">
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4">
               <a
                 href={hero.primaryCtaTarget}
-                className="label-mono !text-[0.7rem] rounded-full px-7 py-3.5 transition-transform duration-200 hover:-translate-y-0.5"
+                className="label-mono !text-[0.7rem] inline-flex items-center justify-center rounded-full px-7 py-3.5 transition-transform duration-200 hover:-translate-y-0.5"
                 style={{
                   background: "var(--color-accent)",
                   color: "var(--color-accent-foreground)",
@@ -121,7 +126,7 @@ export function Hero() {
               </a>
               <a
                 href={hero.secondaryCtaTarget}
-                className="label-mono !text-[0.7rem] rounded-full border border-border px-7 py-3.5 transition-colors hover:border-accent hover:text-accent"
+                className="label-mono !text-[0.7rem] inline-flex items-center justify-center rounded-full border border-border px-7 py-3.5 transition-colors hover:border-accent hover:text-accent"
               >
                 {hero.secondaryCta}
               </a>

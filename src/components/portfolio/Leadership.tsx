@@ -8,6 +8,58 @@ export function Leadership() {
 
   const selectedExperience = leadership.experiences.find((exp) => exp.id === selectedId);
 
+  const groups = [
+    {
+      title: "ORGANIZATIONAL LEADERSHIP",
+      items: leadership.experiences.filter((e) => e.category === "Organizational Leadership"),
+    },
+    {
+      title: "EVENT & COMMITTEE EXPERIENCE",
+      items: leadership.experiences.filter((e) => e.category !== "Organizational Leadership"),
+    },
+  ];
+
+  const renderTimelineItem = (experience: (typeof leadership.experiences)[number]) => (
+    <button
+      key={experience.id}
+      type="button"
+      onClick={() => setSelectedId(experience.id)}
+      className={`relative w-full pl-6 text-left transition-all duration-300 ${
+        selectedId === experience.id ? "opacity-100" : "opacity-60 hover:opacity-80"
+      }`}
+    >
+      {/* Timeline dot */}
+      <span
+        className={`absolute left-0 top-2 h-3.5 w-3.5 rounded-full border-2 transition-all duration-300 ${
+          selectedId === experience.id ? "border-accent bg-accent" : "border-border bg-background"
+        }`}
+      />
+
+      {/* Year */}
+      <p
+        className={`label-mono !text-[0.6rem] mb-1 ${
+          selectedId === experience.id ? "!text-accent" : "!text-muted-foreground"
+        }`}
+      >
+        {experience.year}
+      </p>
+
+      {/* Position */}
+      <p
+        className={`text-sm font-medium transition-colors ${
+          selectedId === experience.id ? "text-foreground" : "text-foreground/70"
+        }`}
+      >
+        {experience.position}
+      </p>
+
+      {/* Organization */}
+      <p className="label-mono !text-[0.55rem] !text-muted-foreground mt-0.5">
+        {experience.organization}
+      </p>
+    </button>
+  );
+
   return (
     <Section id="leadership" label={leadership.label} headline={leadership.headline}>
       <Reveal>
@@ -18,49 +70,15 @@ export function Leadership() {
               {/* Timeline line */}
               <div className="absolute left-[7px] top-2 bottom-2 w-px bg-border" />
 
-              {/* Timeline items */}
-              <div className="space-y-4">
-                {leadership.experiences.map((experience, index) => (
-                  <button
-                    key={experience.id}
-                    type="button"
-                    onClick={() => setSelectedId(experience.id)}
-                    className={`relative pl-6 text-left transition-all duration-300 ${
-                      selectedId === experience.id ? "opacity-100" : "opacity-60 hover:opacity-80"
-                    }`}
-                  >
-                    {/* Timeline dot */}
-                    <span
-                      className={`absolute left-0 top-2 h-3.5 w-3.5 rounded-full border-2 transition-all duration-300 ${
-                        selectedId === experience.id
-                          ? "border-accent bg-accent"
-                          : "border-border bg-background"
-                      }`}
-                    />
-
-                    {/* Year */}
-                    <p
-                      className={`label-mono !text-[0.6rem] mb-1 ${
-                        selectedId === experience.id ? "!text-accent" : "!text-muted-foreground"
-                      }`}
-                    >
-                      {experience.year}
+              {/* Timeline groups */}
+              <div className="space-y-8">
+                {groups.map((group) => (
+                  <div key={group.title}>
+                    <p className="label-mono !text-[0.55rem] !text-muted-foreground mb-4">
+                      {group.title}
                     </p>
-
-                    {/* Position */}
-                    <p
-                      className={`text-sm font-medium transition-colors ${
-                        selectedId === experience.id ? "text-foreground" : "text-foreground/70"
-                      }`}
-                    >
-                      {experience.position}
-                    </p>
-
-                    {/* Organization */}
-                    <p className="label-mono !text-[0.55rem] !text-muted-foreground mt-0.5">
-                      {experience.organization}
-                    </p>
-                  </button>
+                    <div className="space-y-5">{group.items.map(renderTimelineItem)}</div>
+                  </div>
                 ))}
               </div>
             </div>
