@@ -11,7 +11,7 @@ const socialLogos = {
 } as const;
 
 const socialCardClass =
-  "group flex h-28 min-w-0 flex-col items-center justify-center gap-2 rounded-[25px] border border-[#1E293B]/60 bg-[#EAF3FB] px-3 py-4 transition-all duration-300 ease-out hover:-translate-y-1 hover:border-[#38BDF8]/70 hover:bg-[#DFEDF9] hover:shadow-[0_16px_34px_-16px_rgba(14,116,180,0.4)]";
+  "group flex h-24 min-w-0 flex-col items-center justify-center gap-1.5 rounded-[20px] border border-[#1E293B]/60 bg-[#EAF3FB] px-2 py-3 transition-all duration-300 ease-out hover:-translate-y-1 hover:border-[#38BDF8]/70 hover:bg-[#DFEDF9] hover:shadow-[0_16px_34px_-16px_rgba(14,116,180,0.4)] sm:h-28 sm:gap-2 sm:rounded-[25px] sm:px-3 sm:py-4";
 
 export function Contact() {
   const [copied, setCopied] = useState(false);
@@ -36,9 +36,9 @@ export function Contact() {
     <Section id="contact" label={contact.label} headline={contact.headline}>
       <Reveal>
         <div className="rounded-[44px] border border-border bg-[#EFF6FC] p-6 shadow-[0_30px_70px_-30px_rgba(14,116,180,0.25)] sm:p-8 md:p-12 lg:p-16">
-          <div className="grid gap-10 lg:grid-cols-2 lg:gap-16">
+          <div className="grid gap-8 sm:gap-10 lg:grid-cols-2 lg:gap-16">
             {/* LEFT — intro, description, email */}
-            <div className="flex flex-col">
+            <div className="flex min-w-0 flex-col">
               <div className="inline-flex h-12 w-12 items-center justify-center rounded-2xl border border-border bg-white text-accent shadow-sm">
                 <Send className="h-5 w-5" aria-hidden="true" />
               </div>
@@ -52,15 +52,15 @@ export function Contact() {
               </p>
 
               {contact.email && (
-                <div className="mt-8 flex w-full max-w-md items-center gap-3 rounded-full border border-border bg-white py-2 pl-5 pr-2 shadow-sm">
+                <div className="mt-8 flex w-full max-w-md items-center gap-2 rounded-full border border-border bg-white py-2 pl-4 pr-1.5 shadow-sm sm:gap-3 sm:pl-5 sm:pr-2">
                   <Mail className="h-4 w-4 shrink-0 text-accent" aria-hidden="true" />
-                  <span className="min-w-0 flex-1 truncate text-sm font-medium text-[#1E293B]">
+                  <span className="min-w-0 flex-1 truncate text-[0.8rem] font-medium text-[#1E293B] sm:text-sm">
                     {contact.email}
                   </span>
                   <button
                     type="button"
                     onClick={copyEmail}
-                    className={`inline-flex shrink-0 items-center gap-1.5 rounded-full px-4 py-2 label-mono !text-[0.6rem] transition-all duration-300 ${
+                    className={`inline-flex shrink-0 items-center gap-1.5 rounded-full px-3 py-2 label-mono !text-[0.55rem] transition-all duration-300 sm:px-4 sm:!text-[0.6rem] ${
                       copied
                         ? "bg-accent text-white"
                         : "border border-border text-[#475569] hover:border-accent hover:text-accent"
@@ -84,12 +84,12 @@ export function Contact() {
             </div>
 
             {/* RIGHT — CV download + socials */}
-            <div className="flex flex-col justify-center gap-6">
+            <div className="flex min-w-0 flex-col justify-center gap-5 sm:gap-6">
               {contact.cvUrl && (
                 <a
                   href={contact.cvUrl}
                   download
-                  className="group inline-flex w-full items-center justify-center gap-3 rounded-2xl px-8 py-4 text-base font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_20px_44px_-18px_rgba(14,116,180,0.65)]"
+                  className="group inline-flex w-full items-center justify-center gap-3 rounded-2xl px-6 py-3.5 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_20px_44px_-18px_rgba(14,116,180,0.65)] sm:px-8 sm:py-4 sm:text-base"
                   style={{
                     background: "linear-gradient(120deg, #38BDF8 0%, #2563EB 100%)",
                   }}
@@ -102,20 +102,20 @@ export function Contact() {
                 </a>
               )}
 
-              <div className="grid grid-cols-3 gap-3 sm:gap-4">
+              <div className="grid grid-cols-3 gap-2 sm:gap-4">
                 {contact.socials.map((social) => {
                   const logo = socialLogos[social.icon];
                   const content = (
                     <>
-                      <span className="flex h-12 w-full items-center justify-center sm:h-14">
+                      <span className="flex h-9 w-full items-center justify-center sm:h-14">
                         <img
                           src={logo}
                           alt=""
                           draggable={false}
-                          className="h-full w-full max-w-[4.5rem] object-contain transition-transform duration-300 ease-out group-hover:scale-[1.05] sm:max-w-[5.25rem]"
+                          className="h-full w-full max-w-[3rem] object-contain transition-transform duration-300 ease-out group-hover:scale-[1.05] sm:max-w-[5.25rem]"
                         />
                       </span>
-                      <span className="text-center text-[0.7rem] font-medium leading-none text-[#1E293B] transition-colors duration-300 group-hover:text-accent sm:text-xs">
+                      <span className="text-center text-[0.65rem] font-medium leading-none text-[#1E293B] transition-colors duration-300 group-hover:text-accent sm:text-xs">
                         {social.label}
                       </span>
                     </>
